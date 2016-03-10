@@ -68,13 +68,18 @@ a {
   padding: 0 0 0 72px;
   z-index: 1;
   position: fixed;
+  will-change: transform;
+}
+
+.header-raised {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16);
 }
 
 .header__title-wrapper {
   position: absolute;
   bottom: 16px;
-  -webkit-transform-origin: 0 100%;
-          transform-origin: 0 100%;
+/*  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;*/
 }
 
 .header__title {
@@ -103,11 +108,6 @@ body.details-active .story {
   background: linear-gradient(to bottom, #FFF 0%, #FFF 100%);
 }
 
-body.raised .header {
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16),
-      0px 2px 5px 0px rgba(0, 0, 0, 0.23);
-}
-
 main {
   padding-top: 156px;
   -webkit-flex: 1;
@@ -133,6 +133,10 @@ main.loading {
           animation-timing-function: linear;
 }
 
+main {
+  will-change: transform;
+}
+
 @-webkit-keyframes spin {
   from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
@@ -144,13 +148,14 @@ main.loading {
 }
 
 .story {
-  padding: 16px 16px 16px 72px;
+  /*padding: 16px 16px 16px 72px;*/
   background: #FFF;
   background: linear-gradient(to bottom, #FFF 0%,#F4F4F4 100%);
   position: relative;
   min-height: 90px;
   cursor: pointer;
-  transition: all 0.4s ease-out;
+  /*transition: all 0.4s ease-out;*/
+  padding: 16px;
 }
 
 .story:after {
@@ -185,7 +190,7 @@ main.loading {
 }
 
 .story__score {
-  position: absolute;
+  /*position: absolute;*/
   width: 40px;
   height: 40px;
   background: #FFB300;
@@ -193,15 +198,14 @@ main.loading {
   color: rgba(255,255,255,0.87);
   font-weight: 500;
   font-size: 13px;
-  left: 16px;
-  top: 16px;
+  /*left: 16px;*/
+  /*top: 16px;*/
   text-align: center;
   line-height: 40px;
+  margin-right: 20px;
+  float: left;
 
-  box-shadow:
-      0px 2px 5px 0px rgba(0, 0, 0, 0.06),
-      0px 2px 5px 0px rgba(0, 0, 0, 0.08),
-      0px 2px 7px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.10);
 }
 
 .story-details {
@@ -224,7 +228,6 @@ main.loading {
       -webkit-align-content: stretch;
           align-content: stretch;
 
-  opacity: 0;
   position: fixed;
   top: 0;
   left: 100%;
@@ -232,18 +235,24 @@ main.loading {
   height: 100%;
   background: white;
   z-index: 2;
-  box-shadow:
-      0px 2px 5px 0px rgba(0, 0, 0, 0.06),
-      0px 2px 5px 0px rgba(0, 0, 0, 0.08),
-      0px 2px 7px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.10);
 
   overflow: hidden;
-  transition: opacity 0.3s ease-out;
+  transition: transform 0.3s;
+  will-change: transform;
+}
+
+.story-details.visible {
+  transform: translateX(-100vw);
+}
+
+.story-details.hidden {
+  transform: translateX(0);
 }
 
 .story-details * {
-  will-change: transform;
-  transform: translateZ(0);
+  /*will-change: transform;*/
+  /*transform: translateZ(0);*/
 }
 
 .story-details__content {
